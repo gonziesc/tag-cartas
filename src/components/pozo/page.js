@@ -1,6 +1,5 @@
 import React, { Fragment } from 'react';
 import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import './styles.css';
 import 'react-animated-slider/build/horizontal.css';
@@ -20,44 +19,58 @@ function Page(props) {
         <Fragment>
             <CssBaseline />
             
-                
-            <Typography gutterBottom variant="h5" component="h2">
-                              Pozo {pozoId}
-            </Typography>
-            
+            <div className='title'>
+                WELL {pozoId}  </div>     
              
-            
-            <div style={{height:100+'%', width:50+'%'}}>
+            <div style={
+                {marginRight:'auto',
+                marginLeft:'auto',
+                height:100+'%', 
+                width:50+'%'}}>
                          
            
             <Paper elevation={0} className="paper-container"> 
  
-                <Highchart options={({title: {
-                                         text: "Carta de fondo"
-                                                }
-                                        
-                                                ,series: 
-                          [{data : pumpCard}]})
-                        }/>
+                <Highchart options={({
+                    title: {
+                        style: {
+                            fontSize: 15+'px',
+                            fontFamily: 'barlow,sans-serif'
+                        },
+                        text: "PUMP CARD",
+                    },
+                    chart: {
+                        style: {
+                            fontFamily: 'barlow,sans-serif'
+                        }
+                    },
+                    series: 
+                          [{data : pumpCard}]
+                    })
+                }/>
                             
             </Paper>
                 
-          
-              
-            </div>
-            
-            <div style={{height:100+'%', width:50+'%'}}>
-                         
-           
+            <br/> 
             <Paper elevation={0} className="paper-container"> 
  
-                <Highchart options={({title: {
-                                         text: "Carta de superficie"
-                                                }
-                                        
-                                                ,series: 
-                          [{data : surfaceCard}]})
-                        }/>
+                <Highchart options={({
+                    title: {
+                        style: {
+                            fontSize: 15+'px',
+                            fontFamily: 'barlow,sans-serif'
+                        },
+                        text: "SURFACE CARD",
+                    },
+                    chart: {
+                        style: {
+                            fontFamily: 'barlow,sans-serif'
+                        }
+                    },                   
+                    series: 
+                          [{data : surfaceCard}]
+                    })
+                }/>
                             
             </Paper>
                 

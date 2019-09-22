@@ -1,6 +1,11 @@
+.slider {
+    height:100%;
+    width: 100%;
+}
+
 .details-page {
     padding: 3rem 1rem;
-    display: flex;
+    display: flex; 
     justify-content: center;
 }
 
@@ -23,4 +28,16 @@
 
 .item-loader {
     padding: 1rem;
+}
+
+.title {
+    padding-bottom: 20px;
+    text-align: center;
+    font-size: 25px;
+    font-family: barlow,sans-serif; 
+    letter-spacing: 1.5px;
+}
+
+.sub-title {
+    text-align: right
 }
