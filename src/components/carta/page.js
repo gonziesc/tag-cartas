@@ -14,7 +14,7 @@ function Page(props) {
     
    const { cartas, updateState,pozoId} = props;
   
-   debugger;
+   
    const undiagnosedCards = cartas.filter(c => (c.diagnose ===""));
    
     
@@ -24,6 +24,8 @@ function Page(props) {
          
 
         <div style={{display: 'flex',  justifyContent:'center', alignItems:'center', height: '175vh'}}>
+            
+
             
                 <Slider className="slider">             
            
@@ -35,7 +37,9 @@ function Page(props) {
                         </div> 
 
                         <div className="sub-title" > 
-                            DATE
+                            <h5>
+                            DATE {JSON.stringify(carta.updatedAt).slice(9,11)}/{JSON.stringify(carta.updatedAt).slice(6,8)}/{JSON.stringify(carta.updatedAt).slice(1,5)}
+                            </h5>
                         </div>
 
                         <Paper elevation={0} className="paper-container"> 
@@ -49,10 +53,13 @@ function Page(props) {
                                             text: 'PUMP CARD'
                                         },
                                         chart: {
+                                            type: 'scatter',
                                             style: {
                                                 fontFamily: 'barlow,sans-serif'
                                             }
-                                        },                         
+                                        },   
+                                        plotOptions:
+                                        {   series: {lineWidth: 3}},                        
                                         series: [{data : cartaFondo(carta)}]
                                         }
                                     )}
@@ -75,10 +82,13 @@ function Page(props) {
                                             text: 'SURFACE CARD' 
                                         },
                                         chart: {
+                                            type: 'scatter',
                                             style: {
                                                 fontFamily: 'barlow,sans-serif'
                                             }
-                                        },                         
+                                        },   
+                                        plotOptions:
+                                        {   series: {lineWidth: 3}},                        
                                         series: [{data : cartaSuperficie(carta)}]
                                         }
                                     )}

@@ -13,8 +13,18 @@ export default function CheckboxLabels(props) {
     flowingWell : false,
     fishingRodRods : false
   });
-  debugger;
-   
+  
+
+  const resetState = () => {
+    setState({
+      gasInterference: false,
+      fluidStroke: false,
+      bombStroke : false,
+      flowingWell : false,
+      fishingRodRods : false
+    })
+  };
+
 
   const handleChange = name => event => {
     setState({ ...state, [name]: event.target.checked });
@@ -31,7 +41,7 @@ export default function CheckboxLabels(props) {
       </div>
     );
   }
-  debugger;
+  
   const nombre = user.nickname;
   
 
@@ -93,7 +103,8 @@ export default function CheckboxLabels(props) {
         }
         label="Pesca de varillas de bombeo"
       />
-      <Button color="primary" onClick={()=> {updateState(carta,state,nombre);}}>Update</Button>    
+      <Button color="primary" onClick={()=> {updateState(carta,state,nombre); 
+                                              resetState()}}>Update</Button>    
     </FormGroup>
     
   );

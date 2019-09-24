@@ -12,15 +12,17 @@ function Page(props) {
   
    const { cartasPozo,pozoId} = props;
    
-   const pumpCard = cartasPozo.length ? cartaFondo(cartasPozo[0]) : {};
+    const pumpCard = cartasPozo.length ? cartaFondo(cartasPozo[0]) : {};
     const surfaceCard = cartasPozo.length ? cartaSuperficie(cartasPozo[0]) : {};
+    
+    const numeroCarta = cartasPozo.length ? JSON.parse(cartasPozo[0].cardNumber) : "";
     console.log(pumpCard)
     return (
         <Fragment>
             <CssBaseline />
             
-            <div className='title'>
-                WELL {pozoId}  </div>     
+            <div className='title' id='titlePozo'>
+                WELL {pozoId} - CARD {numeroCarta} </div>     
              
             <div style={
                 {marginRight:'auto',
@@ -40,13 +42,16 @@ function Page(props) {
                         text: "PUMP CARD",
                     },
                     chart: {
+                        type: 'scatter',
                         style: {
                             fontFamily: 'barlow,sans-serif'
                         }
                     },
+                    plotOptions:
+                    {   series: {lineWidth: 2.5}},  
                     series: 
-                          [{data : pumpCard}]
-                    })
+                          [{data : pumpCard}],
+                    updateArgs : [true,true,true]})
                 }/>
                             
             </Paper>
@@ -54,7 +59,7 @@ function Page(props) {
             <br/> 
             <Paper elevation={0} className="paper-container"> 
  
-                <Highchart options={({
+                <Highchart oneToOne="false" options={({
                     title: {
                         style: {
                             fontSize: 15+'px',
@@ -63,10 +68,13 @@ function Page(props) {
                         text: "SURFACE CARD",
                     },
                     chart: {
+                        type: 'scatter',
                         style: {
                             fontFamily: 'barlow,sans-serif'
                         }
-                    },                   
+                    },   
+                    plotOptions:
+                    {   series: {lineWidth: 2.5}},                
                     series: 
                           [{data : surfaceCard}]
                     })
