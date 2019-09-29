@@ -8,25 +8,54 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 //import pozos from '../../data/pozos';
 import { Link } from 'react-router-dom';
+import CardsPozos from "../cardsPozos";
+import Grid from '@material-ui/core/Grid';
 
 const useStyles = makeStyles(theme => ({
   root: {
-    width: '80%',
-    marginLeft: 'auto',
-    marginRight: 'auto',
-    marginTop: theme.spacing(3),
-    overflowX: 'auto',
+    flexGrow: 1,
+    marginTop: 40
   },
-  table: {
-    minWidth: 650,
+  paper: {
+    height: 140,
+    width: 100,
+  },
+  control: {
+    padding: theme.spacing(2),
   },
 }));
 
 
+
 export default function Page(props) {
   const classes = useStyles();
-  const {pozos} = props;
 
+  const {pozos, cartas} = props;
+
+  const obtenerCarta = (p, cartas) =>{
+    console.log(cartas);
+    const aux =  cartas.filter(c => (c.well === p.id))[0];
+    return aux;
+  }
+
+  return(
+
+    <Grid container className={classes.root} spacing={2}>
+      <Grid item xs={12}>
+        <Grid container justify="center" spacing={3}>
+          {pozos.map(p => (
+            <Grid key={p.id} item>
+              <CardsPozos pozo={p} carta={obtenerCarta(p, cartas)}/>
+            </Grid>
+          ))}
+        </Grid>
+      </Grid>
+      </Grid>
+  );
+
+
+
+  /*
   return (
     <Paper className={classes.root}>
       <Table className={classes.table}>
@@ -50,5 +79,5 @@ export default function Page(props) {
         </TableBody>
       </Table>
     </Paper>
-  );
+  );*/
 }
