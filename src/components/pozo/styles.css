@@ -1,29 +1,30 @@
-.details-page {
-    padding: 3rem 1rem;
-    display: flex;
-    justify-content: center;
+.highcharts-root {
+    width: 100%;
+}
+
+.highcharts-container {
+    width: 100%;
+    height: 100%;
+}
+
+.data-highcharts-chart {
+    width: inherit;
+    align-self: center;
+    text-align:center;
 }
 
 .paper-container {
     padding: 1rem;
     width: 100%;
-    margin: auto;
+    align-self: center;
+    text-align:center;
 }
 
-.content {
-    padding: 1rem 0rem;
-}
-
-.item-image {
-    width: 100%;
-    height: 250px;
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center;
-}
-
-.item-loader {
-    padding: 1rem;
+#papers-container-pozo {
+    margin-right: auto;
+    height: 100%;
+    width: 500px;
+    margin-left: 200px;
 }
 
 .title {
@@ -34,22 +35,93 @@
     letter-spacing: 1.5px;
 }
 
+#spinner {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    z-index: 1000;
+    height: 31px;
+    width: 31px;
+}
+
 .botonCartas {
     background-color: white; 
-    border: #64B5A4;
+    border: black;
     color: black;
-    padding: 15px 32px;
     text-align: center;
     text-decoration: none;
     float: right;
+    margin-top: 15px
   }
-  .botonCartas:hover {
+
+.botonCartas:hover {
     background-color: #64B5A4; /* Green */
     color: white;
     font-family: barlow,sans-serif;
   } 
 
-  .botonTexto {
+.botonTexto {
     font-size: 16px;
     font-family: barlow,sans-serif;
   }
+
+.card {
+    height: 100%;
+    width: 100%;
+}
+
+.header {
+    text-align: left;
+    justify-content: right;
+}
+
+.media {
+    justify-content: center;
+    align-content: center; 
+    display: list-item;
+}
+
+#info-container-pozo {
+    margin-left: auto;
+    height: 430px;
+    width: 360px;
+    float: right;
+    color: black;
+    margin-right: 240px;
+}
+
+@media screen and (max-width: 1220px) {
+    #info-container-pozo {
+        float: none;
+        margin-left: auto;
+        margin-right: auto;
+        height: 360px;
+        width: 360px;
+    }
+
+    #papers-container-pozo {
+        margin-right: auto;
+        margin-left: auto;
+        padding: 20px 0px 20px 0px;
+        height: 100%;
+        width: 500px;
+    }
+}
+
+#problemColor {
+    background-color: red;
+    width: 25px;
+    height: 25px;
+}
+
+#withoutProblemColor {
+    background-color: #84c456;
+    width: 25px;
+    height: 25px;
+}
+
+#futureProblemColor {
+    background-color: yellow;
+    width: 25px;
+    height: 25px;
+}

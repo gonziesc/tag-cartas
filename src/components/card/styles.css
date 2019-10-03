@@ -1,3 +1,4 @@
+
 .highcharts-root {
     width: 100%;
 }
@@ -20,17 +21,18 @@
     text-align:center;
 }
 
-.papers-container {
+#papers-container-carta {
     margin-right: auto;
-    margin-left: auto;
     height: 100%;
-    width: 500px;
+    width: 530px;
+    padding: 0px 0px 20px 40px;
 }
 
 .container {
     align-self: center;
     margin: auto;
     width: 100%;
+    display:table;
 }
 
 .title {
@@ -48,4 +50,66 @@
     z-index: 1000;
     height: 31px;
     width: 31px;
+}
+
+.card {
+    height: 100%;
+    width: 100%;
+}
+
+.header {
+    text-align: left;
+    justify-content: right;
+    background-color: #E9E9E9;
+}
+
+.media {
+    justify-content: center;
+    align-content: center; 
+    display: list-item;
+}
+
+#info-container-carta {
+    margin-left: auto;
+    height: 200px;
+    width: 350px;
+    float: right;
+    color: black;
+}
+
+#problemColor {
+    background-color: red;
+    width: 25px;
+    height: 25px;
+}
+
+#withoutProblemColor {
+    background-color: #84c456;
+    width: 25px;
+    height: 25px;
+}
+
+#futureProblemColor {
+    background-color: yellow;
+    width: 25px;
+    height: 25px;
+}
+
+
+@media screen and (max-width: 1020px) {
+    #info-container-carta {
+        float: none;
+        margin-left: auto;
+        margin-right: auto;
+        height: 200px;
+        width: 350px;
+    }
+
+    #papers-container-carta {
+        margin-right: auto;
+        margin-left: auto;
+        height: 100%;
+        width: 530px;
+        padding: 20px 0px 20px 0px;
+    }
 }
