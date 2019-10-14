@@ -35,16 +35,8 @@
     display:table;
 }
 
-.title {
-    padding-bottom: 20px;
-    text-align: center;
-    font-size: 25px;
-    font-family: barlow,sans-serif; 
-    letter-spacing: 1.5px;
-}
-
-#spinner {
-    position: fixed;
+#spinner-notfixed {
+    position: absolute;
     left: 50%;
     top: 50%;
     z-index: 1000;
@@ -53,7 +45,7 @@
 }
 
 .card {
-    height: 100%;
+    height: 90%;
     width: 100%;
 }
 
@@ -71,30 +63,12 @@
 
 #info-container-carta {
     margin-left: auto;
+    margin-right: 150px;
     height: 200px;
     width: 350px;
     float: right;
     color: black;
 }
-
-#problemColor {
-    background-color: red;
-    width: 25px;
-    height: 25px;
-}
-
-#withoutProblemColor {
-    background-color: #84c456;
-    width: 25px;
-    height: 25px;
-}
-
-#futureProblemColor {
-    background-color: yellow;
-    width: 25px;
-    height: 25px;
-}
-
 
 @media screen and (max-width: 1020px) {
     #info-container-carta {

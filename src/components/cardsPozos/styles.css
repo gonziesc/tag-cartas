@@ -1,0 +1,28 @@
+.container {
+    padding-top: 25px;
+}
+
+#spinner {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    z-index: 1000;
+    height: 31px;
+    width: 31px;
+}
+
+#card-pozo {
+    height: 100%;
+    width: 100%;
+    display: block;
+    align-items: stretch;
+    width: 380px;
+}
+
+.media {
+    justify-content: center;
+    align-content: center; 
+    display: list-item;
+    padding-top: 0px;
+}
+

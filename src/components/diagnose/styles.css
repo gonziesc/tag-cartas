@@ -1,0 +1,61 @@
+
+.papers-container-diag {
+    width:60%;
+    align-self: center;
+    margin: auto;
+}
+
+.MuiFormGroup-row {
+    justify-content: center;
+}
+.slider {
+    height:100%;
+    width: 70%;
+    align-content: center;
+}
+
+.highcharts-root {
+    width: 100%;
+}
+
+.highcharts-container {
+    width: 100%;
+    height: 100%;
+}
+
+.data-highcharts-chart {
+    width: inherit;
+    align-self: center;
+    text-align:center;
+}
+
+.paper-container {
+    padding: 1rem;
+    width: 100%;
+    align-self: center;
+    text-align:center;
+}
+
+.content {
+    padding: 1rem 0rem;
+}
+
+.item-image {
+    width: 100%;
+    height: 250px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+
+.item-loader {
+    padding: 1rem;
+}
+
+.sub-title-date {
+    text-align: center;
+    font-size: 15px;
+    font-family: barlow,sans-serif; 
+    padding-bottom: 20px;
+}
+

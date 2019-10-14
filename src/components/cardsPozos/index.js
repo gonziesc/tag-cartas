@@ -1,39 +1,13 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
 import CardActionArea from '@material-ui/core/CardActionArea';
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
 import CardContent from "@material-ui/core/CardContent";
-import IconButton from "@material-ui/core/IconButton";
-import Typography from "@material-ui/core/Typography";
-import { red , yellow, green, grey} from "@material-ui/core/colors";
-import MoreVertIcon from "@material-ui/icons/MoreVert";
 import { withRouter, Link } from 'react-router-dom';
+import './styles.css';
+import '../general-styles.css'
 
-const useStyles = makeStyles(theme => ({
-  card: {
-    maxWidth: 400,
-    maxHeight : 500
-  },
-  media: {
-    textAlign: 'center',
-    justify: 'center',
-    alignContent: 'center',
-    paddingTop: "10%" // 16:9
-  },
-  problemColor: {
-    backgroundColor: red[400]
-  },
-  withoutProblemColor:{
-    backgroundColor: green[400]
-  },
-  futureProblemColor:{
-    backgroundColor : yellow[400]
-  },
-  undiagnosedColor:{
-    backgroundColor: grey[400]
-  }
-}));
+
 
 const obtenerDiagnostico = (diagnose) =>{
   switch(diagnose){
@@ -64,25 +38,24 @@ const translate = (diagnose) =>{
   }
 }
 
-const obtenerColor = (diagnose,porcentaje,classes) =>{
+const obtenerColor = (diagnose,porcentaje) =>{
   if(diagnose==="Sin problemas"){
     if(porcentaje<35){
-      return classes.withoutProblemColor
+      return "withoutProblemColor"
     }
     else{
-      return classes.futureProblemColor
+      return "futureProblemColor"
     }
   } else if ( diagnose==="Sin diagnostico"){
-    return classes.undiagnosedColor
+    return "undiagnosedColor"
   }
   else{
-    return classes.problemColor
+    return "problemColor"
   }
 } 
 
 
 function CardsPozos(props) {
-  const classes = useStyles();
   const {pozo, carta} = props;
   const c = carta ? carta : {};
   const diagnose = obtenerDiagnostico(c.diagnose);
@@ -91,45 +64,39 @@ function CardsPozos(props) {
  
     
   return (
-    <Link to={"/pozos/"+pozo.id} style={{ textDecoration: 'none' }}>
-    <Card className={classes.card}>
-      <CardActionArea >
-      <CardHeader
-        className={obtenerColor(diagnose,porcentaje,classes)}
-        action={
-          <IconButton aria-label="settings">
-            <MoreVertIcon />
-          </IconButton>
-        }
-        subheader={"Última actualización: "+ fecha}
-      />
-      <CardContent 
-      className={classes.media} >
-      <CardHeader 
-      textAlign= 'center'
-      titleTypographyProps={{ variant:'h2' }}
-      title={"Pozo " + pozo.id}
-      />
-      </CardContent>
-      <CardContent 
-      className={classes.media} >
+    <div className="container"> 
+      <Link to={"/pozos/"+pozo.id} style={{ textDecoration: 'none' }}>
         
-        <Typography variant="subtitle1"  component="p">
-          {"Diagnóstico: " + diagnose }
-        </Typography>
+        <Card id="card-pozo">
+          <CardActionArea >
+            <CardHeader
+              className={obtenerColor(diagnose,porcentaje)}
+              
+            />
+            <CardContent className="media" >
+              <div className="Dashboard-titles">
+              POZO {pozo.id}
+              </div>
 
-        <Typography variant="subtitle1"  component="p">
-          {"Probabilidad de futuro problema: " + porcentaje.toFixed(2) + "%" }
-        </Typography>
-        {/*
-        <Typography variant="subtitle1" color='textPrimary' component="p">
-        Última actualización: {JSON.stringify(fecha).slice(9,11)}/{JSON.stringify(fecha).slice(6,8)}/{JSON.stringify(fecha).slice(1,5)}
-        </Typography>
-        */}
-      </CardContent>
-        </CardActionArea>
-    </Card>
-    </Link>
+              <div class="dropdown-divider"></div>
+
+              <div className="Dashboard-subtitles">
+                Diagnóstico: {diagnose}
+              </div>
+
+              <div className="Dashboard-subtitles" >
+                Probabilidad de futuro problema: {porcentaje.toFixed(2)}%
+              </div>
+              
+              <div className="Dashboard-subtitles" >
+              Última actualización: {fecha}
+              </div>
+              
+            </CardContent>
+          </CardActionArea>
+        </Card>
+      </Link>
+    </div>
   );
 }
 export default withRouter(CardsPozos);

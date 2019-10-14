@@ -6,13 +6,9 @@ import 'react-animated-slider/build/horizontal.css';
 import Highchart from "../highchart";
 import { cartaFondo, cartaSuperficie } from "../../cartaXY";
 import { Link } from 'react-router-dom';
-import CardActionArea from '@material-ui/core/CardActionArea';
 import Card from "@material-ui/core/Card";
-import CardHeader from "@material-ui/core/CardHeader";
 import CardContent from "@material-ui/core/CardContent";
-import Typography from "@material-ui/core/Typography";
-import { red , yellow, green, grey} from "@material-ui/core/colors";
-import Avatar from '@material-ui/core/Avatar';
+import '../general-styles.css';
 
 const obtenerDiagnostico = (diagnose) =>{
     switch(diagnose){
@@ -62,27 +58,26 @@ const obtenerDiagnostico = (diagnose) =>{
 function Page(props) {
 
     const { cartasPozo, pozoId, wells } = props;
-    const well = wells.find(w => w.number == pozoId);
+    const aWell = wells.find(w => w.number == pozoId);
+    const well = aWell ? aWell : {};
     const pumpCard = cartasPozo.length ? cartaFondo(cartasPozo[0]) : {};
     const surfaceCard = cartasPozo.length ? cartaSuperficie(cartasPozo[0]) : {};
     const last5Cards = cartasPozo.length ? cartasPozo.slice(0, 5) : [];
 
     const numeroCarta = cartasPozo.length ? JSON.parse(cartasPozo[0].cardNumber) : "";
 
-    const wellLengths = well ? well.wellLengthInFile.join(" m, ") : "";
     const race = well ? well.race : "";
-    const diameters = well ? well.wellDiameters.join(" m, ") : "";
     const {carta} = props;
     const c = carta ? carta : {};
     
-    let diagnose, fecha, porcentaje;
+    let diagnose, porcentaje;
 
     if(Object.keys(pumpCard).length>0) {
       diagnose = obtenerDiagnostico(cartasPozo[0].diagnose);
       porcentaje = diagnose==="Sin problemas"  || diagnose ==="Sin diagnostico" ? c.id*100/2173 : 100;
     }
     
-    return Object.keys(pumpCard).length>0 ? (
+    return (Object.keys(well).length>0 & Object.keys(pumpCard).length>0) ? (
         <Fragment>
             <CssBaseline />
 
@@ -91,67 +86,69 @@ function Page(props) {
                 POZO {pozoId} </div>
 
             <div id="info-container-pozo">
-                <Card className="card">
+                <Card id="card">
                    
-                        <CardContent className="header">
-                            <CardHeader 
-                            avatar={
-                            <Avatar aria-label="recipe" id={obtenerColor(diagnose,porcentaje)}>
-                            </Avatar>}
-                                /*avatar={
-                                    <Avatar aria-label="recipe" className={obtenerColor(diagnose,porcentaje,classes)}>
-                                    </Avatar>}*/
-                                title={<Typography variant="h5" component="p" alignContent='right' textAlign='right'>
-                                {"Información"}
-                                </Typography>}
+                        <CardContent 
+                        className={obtenerColor(diagnose,porcentaje)}
                             />
-                        </CardContent>
 
                         <CardContent className="media">
+                            <div className="Dashboard-titles">
+                            Información
+                            </div>
 
-                            <Typography variant="body2"  component="p">
-                            {"Longitudes de tramos:"}
-                            </Typography>
+                            <div class="dropdown-divider"></div>
+
+                            <div className="Dashboard-subtitles">
+                            Longitudes de tramos: 
+                            </div>
                           
                             {well.wellLengthInFile.map(x =>
-                             <Typography variant="body2"  component="p">
+                             <div className="Dashboard-subtitles">
                              {"⇒ " + x +" m"}
-                             </Typography>)}
+                             </div>)}
                              
                              <br></br>
 
-                            <Typography variant="body2"  component="p">
-                            {"Diámetros de tramos: "}
-                            </Typography>
+                            <div className="Dashboard-subtitles">
+                            Diámetros de tramos:
+                            </div>
 
                             {well.wellDiameters.map(x =>
-                             <Typography variant="body2"  component="p">
+                             <div className="Dashboard-subtitles">
                              {"⇒ " + x +" m"}
-                             </Typography>)}
+                             </div>)}
 
                              <br></br>
 
-                            <Typography variant="body2"  component="p">
-                            {"Carrera: "+ race}
-                            </Typography>
+                            <div className="Dashboard-subtitles">
+                            Carrera: {race}
+                            </div>
                             
                             <br></br>
 
-                            <Typography variant="body2"  component="p">
-                            {"Diagnóstico: "+ diagnose}
-                            </Typography>
-                            <Typography variant="body2"  component="p">
-                            {"Porcentaje: "+ porcentaje + "%"}
-                            </Typography>
+                            <div className="Dashboard-subtitles">
+                            Diagnóstico: {diagnose}
+                            </div>
+
+                            <br></br>
+
+                            <div className="Dashboard-subtitles">
+                            Porcentaje: {porcentaje}%
+                            </div>
 
                         </CardContent>
                   
                 </Card>
 
-                <button className="botonCartas" >
-                <Link className="botonTexto" to={"/pozos/"+ pozoId + "/cartas" }>Ver Cartas</Link>
+            <br></br>
 
-            </button>
+            <Link to={"/pozos/"+ pozoId + "/cartas" }>
+                <button type="button" class="btn btn-outline-info">
+                    Ver Cartas
+                </button>
+            </Link>
+            
 
             </div>
 
@@ -167,7 +164,7 @@ function Page(props) {
                             },
                             text: "CARTA DE FONDO " + numeroCarta,
                         },
-                        colors: ['#64B5A4'],
+                        colors: ['#E78B50'],
                         chart: {
                             type: 'scatter',
                             style: {
@@ -198,7 +195,7 @@ function Page(props) {
                             },
                             text: "CARTA DE SUPERFICIE " + numeroCarta,
                         },
-                        colors: ['#E78B50'],
+                        colors: ['#17726A'],
                         chart: {
                             type: 'scatter',
                             style: {
