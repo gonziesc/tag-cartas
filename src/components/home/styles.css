@@ -1,22 +1,92 @@
-
-.btn-outline {
-    margin-top: 80px;
-    color: rgb(11, 27, 24);
-    border-color: rgb(11, 27, 24);
-    border-width: 2px;
-    font-weight: 1000;
-}
-
-.btn-outline:hover{
-    background-color: #64B5A4;
-    border-width: 1px;
-}
-
 .home-container {
     display: flex;
     justify-content: center;
     height: 1100px;
     background-image: url('../../data/images/Background.jpg');
-    background-position: center;
-    background-size: cover; /* Resize the background image to cover the entire container */
+    background-repeat: no-repeat;
+    background-size: 100% 60%; 
+}
+
+
+.container-alpedo {
+    display: block;
+}
+
+.banner-panel {    
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    height: 25%;
+    width: 35%;
+    margin-top: 120px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.title-home {
+    color: whitesmoke;
+    text-align: center;
+    font-size: 64px;
+    font-family: barlow,sans-serif; 
+    letter-spacing: 1.5px;
+    margin-top: 10px;
+}
+
+.body-home {
+    color:white;
+    text-align: center;
+    font-size: 17px;
+    font-family: barlow,sans-serif; 
+    letter-spacing: 1.5px;
+}
+
+.columna {
+    border-right: 0px solid black;
+    display: table;    
+    float: left;
+    width: 33.33%;
+    text-align: center;
+    margin-top:30px;
+    margin-bottom: 30px;
+    color: black;
+    font-size: 18px;
+    font-family: barlow,sans-serif; 
+    letter-spacing: 1.5px;
+ 
+}
+.texto{
+    margin-top: 30px;
+}
+#last-column {
+   
+    display: table;    
+    float: right;
+    width: 33.33%;
+    text-align: center;
+    margin-top:30px;
+    margin-bottom: 30px;
+    color: black;
+    font-size: 18px;
+    font-family: barlow,sans-serif; 
+    letter-spacing: 1.5px;
+
+}
+
+.grid {
+    margin-top: 300px;
+    justify-content: center;  
+  
+    border-radius: 5px;
+    height: 10%;
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+   }
 }

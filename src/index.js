@@ -7,6 +7,7 @@ import App from "./app";
 import { register } from './serviceWorker';
 
 
+
 //import Footer from './components/layouts/footer';
 const onRedirectCallback = appState => {
     window.history.replaceState(
@@ -29,6 +30,7 @@ const Root = (
 >
     <App />
     </Auth0Provider>
+    
 );
 
 register();

@@ -12,7 +12,7 @@ import Home from './components/home';
 // New - import the React Router components, and the Profile page component
 
 import { Provider } from 'react-redux';
-import { BrowserRouter, Redirect, Switch } from 'react-router-dom';
+import { BrowserRouter, Redirect, Switch, Route } from 'react-router-dom';
 import store from './redux/store';
 import PrivateRoute from "./components/privateRoute";
 
@@ -30,7 +30,7 @@ function App() {
                 <PrivateRoute path="/diagnose" component={Diagnose} />
                 <PrivateRoute exact path="/pozos/:pozoId" component={Pozo} />
                 <PrivateRoute path="/pozos" component={PozosTable} />
-                <PrivateRoute path="/" component={Home} />         
+                <Route path="/" component={Home} />         
                 <Redirect from="/" to="/" />
             </Switch>
         </BrowserRouter>
