@@ -25,7 +25,7 @@ const Root = (
     <Auth0Provider
     domain={config.domain}
     client_id={config.clientId}
-    redirect_uri={process.env.REDIRECT_URL || "http://localhost:3000/pozos"} //CUIDADO CON EL LOCALHOST
+    redirect_uri= "https://dynacards-react.herokuapp.com/pozos"
     onRedirectCallback={onRedirectCallback}
 >
     <App />
